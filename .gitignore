@@ -41,9 +41,9 @@ Thumbs.db
 *.war
 
 #gradle file
-settings.gradle
+#settings.gradle
 .gradle/
-README.md
+#README.md
 gradlew
 gradlew.bat
 gradle/
