@@ -1,0 +1,46 @@
+.signup{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.signup-container{
+    border-radius: 10px !important;
+    box-shadow: 3px 3px 10px rgb(130, 130, 172);
+}
+.signup-container form{
+    height: 300px;
+    overflow-y: scroll;
+}
+.welcome{
+    font-weight: 100 !important;
+}
+.bg-photo{
+    background-image: url(https://media.istockphoto.com/id/846454370/photo/road-trip.webp?b=1&s=170667a&w=0&k=20&c=ZakFlu8LoHVnxa3bBg7xqalQTR86_GrC1KSm7IEr0_Y=);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-attachment: fixed; */
+    border-radius: 0px 10px 10px 0px;
+}
+.signup-btn{
+    background:linear-gradient(rgb(0, 28, 165),rgb(0, 178, 219));
+    color: white;
+    font-weight: 600;
+}
+.signup-btn:hover{
+    background:linear-gradient(rgb(0, 178, 219),rgb(0, 28, 165));
+    font-weight: 500;
+    color: whitesmoke;
+    box-shadow: 3px 3px 10px gray;
+}
+.signup-cancel-btn{
+    background:linear-gradient(rgb(225, 0, 4),rgb(255, 127, 118));
+    color: white;
+    font-weight: 600;
+}
+.signup-cancel-btn:hover{
+    background:linear-gradient(rgb(255, 127, 118),rgb(225, 0, 4));
+    font-weight: 500;
+    color: whitesmoke;
+    box-shadow: 3px 3px 10px gray;
+}

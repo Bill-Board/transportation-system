@@ -1,0 +1,53 @@
+nav{
+    background:linear-gradient(rgb(0, 57, 114),rgba(0, 82, 73, 0.424));
+    box-shadow: 2px 2px 5px gray;
+}
+nav .navbar-brand{
+    color: whitesmoke !important;
+}
+nav .nav-link{
+    color: #121245;
+}
+nav .logout-btn{
+    border: 1px solid beige;
+    border-radius: 5px;
+    background: rgba(0, 0, 128, 0.4);
+}
+nav .logout-btn:hover{
+    border: 1px solid beige;
+    border-radius: 2px;
+    box-shadow: 1px 1px 4px wheat;
+}
+.dash-content{
+    /* margin: 100px; */
+
+    padding: 20px;
+    border: 1px solid rgba(123, 125, 161, 0.653);
+    box-shadow: 1px 1px 5px rgb(32, 38, 69);
+    border-radius: 10px;
+}
+.side-bar{
+    border-right: 1px solid rgb(202, 202, 255);
+    min-height: 70vh;
+}
+.side-bar .nav-link{
+    margin-top: 2px;
+    color: navy;
+    box-shadow: 1px 1px 2px rgba(206, 206, 255, 0.767);
+}
+.side-bar .active{
+    background-color: white !important;
+    color: navy !important;
+    border-bottom: 3px solid navy;
+    box-shadow: 1px 1px 2px rgba(172, 172, 255, 0.767);
+}
+.error {
+     color: red;
+ }
+
+.bottom {
+    position: absolute;
+    bottom: 0;
+    padding: 10px;
+    color: #757578;
+}

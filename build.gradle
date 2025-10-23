@@ -1,0 +1,90 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'net.therap'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+project.ext {
+    springVersion = '5.3.8'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    runtimeOnly 'org.postgresql:postgresql:42.7.1'
+    implementation 'org.hibernate:hibernate-core:5.6.15.Final'
+    implementation 'org.hibernate.validator:hibernate-validator:6.2.5.Final'
+
+    implementation 'javax.servlet:javax.servlet-api:4.0.1'
+    implementation 'javax.servlet:jstl:1.2'
+    implementation 'javax:javaee-api:7.0'
+
+    implementation "org.springframework:spring-orm:${springVersion}"
+    implementation "org.springframework:spring-tx:${springVersion}"
+    implementation "org.springframework:spring-context:${springVersion}"
+    implementation "org.springframework:spring-webmvc:${springVersion}"
+    implementation "org.springframework:spring-web:${springVersion}"
+
+    runtimeOnly 'commons-fileupload:commons-fileupload:1.3.3'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.1'
+
+    implementation 'com.zaxxer:HikariCP:4.0.3'
+    implementation 'log4j:log4j:1.2.16'
+    implementation 'ch.qos.logback:logback-classic:1.2.6'
+
+    implementation 'opensymphony:sitemesh:2.4.2'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+def tomcatDir = '/usr/local/tomcat-9'
+def warName = 'transportation_system'
+
+test {
+    useJUnitPlatform()
+}
+
+tasks.register('startTomcat', Exec) {
+    commandLine 'bash', '-c', "${tomcatDir}/bin/catalina.sh start"
+}
+
+tasks.register('stopTomcat', Exec) {
+    dependsOn(startTomcat)
+
+    commandLine 'bash', '-c', "${tomcatDir}/bin/catalina.sh stop"
+}
+
+tasks.register('removeExistingWar') {
+    dependsOn(stopTomcat)
+
+    doLast {
+        delete fileTree(dir: "${tomcatDir}/webapps", include: [archivesBaseName + '*'])
+    }
+}
+
+tasks.register('deploy', Copy) {
+    dependsOn(removeExistingWar, startTomcat)
+
+    from('build/libs')
+    into("${tomcatDir}/webapps")
+    include(archivesBaseName + '-' + version + '.war')
+    rename { archivesBaseName + '.war' }
+
+    doLast {
+        println "Server URL: http://localhost:8080/${warName}"
+    }
+}

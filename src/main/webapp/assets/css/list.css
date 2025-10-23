@@ -1,0 +1,28 @@
+.dash-card{
+    background: linear-gradient(white,rgb(231, 234, 255));
+}
+.dash-btn-card{
+    color: white;
+    padding: 10px;
+    background: rgb(30, 82, 115);
+    border-radius: 5px;
+}
+.dash-btn-card:hover{
+    color: white;
+    border-radius: 0px;
+    background: rgb(43, 117, 164);
+}
+.btn-edit{
+    background: rgb(248, 254, 124);
+}
+.btn-detail{
+    background: #7d8afa;
+
+}
+.btn-approve{
+    background: #56fc64;
+}
+.btn-decline{
+    background: #fc5656;
+
+}

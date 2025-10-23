@@ -1,0 +1,33 @@
+.login{
+    display: flex;
+    justify-content: center; /* Horizontally center content */
+    align-items: center; /* Vertically center content */
+    height: 100vh;
+}
+.login-container{
+    border-radius: 10px !important;
+    box-shadow: 3px 3px 10px rgb(130, 130, 172);
+}
+.welcome{
+    font-weight: 100 !important;
+}
+.bg-photo{
+    background-image: url(https://media.istockphoto.com/id/846454370/photo/road-trip.webp?b=1&s=170667a&w=0&k=20&c=ZakFlu8LoHVnxa3bBg7xqalQTR86_GrC1KSm7IEr0_Y=);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 0px 10px 10px 0px;
+}
+.login-btn{
+    background:linear-gradient(rgb(0, 28, 165),rgb(0, 178, 219));
+    color: white;
+    font-weight: 600;
+}
+.login-btn:hover{
+    background:linear-gradient(rgb(0, 178, 219),rgb(0, 28, 165));
+    font-weight: 500;
+    color: whitesmoke;
+    box-shadow: 3px 3px 10px gray;
+}
+.error {
+    color: red;
+}
