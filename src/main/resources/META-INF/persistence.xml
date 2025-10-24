@@ -11,7 +11,7 @@
             <property name="hibernate.connection.characterEncoding" value="utf8"/>
             <property name="hibernate.connection.useUnicode" value="true"/>
             <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
-            <property name="hibernate.connection.url" value="jdbc:postgresql://127.0.0.1:5432/t_p_s"/>
+            <property name="hibernate.connection.url" value="jdbc:postgresql://127.0.0.1:5432/transportation_system_db05"/>
             <property name="hibernate.connection.autocommit" value="true"/>
             <property name="hibernate.connection.username" value="postgres"/>
             <property name="hibernate.connection.password" value="1919"/>
