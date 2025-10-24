@@ -70,11 +70,19 @@ show_log() {
   fi
 }
 
-start_all() {
-  kill_tomcat
+move_to_webapps() {
   remove_existing
-  gradle_clean_build
   copy_to_tomcat
+}
+
+initiating() {
+  kill_tomcat
+  gradle_clean_build
+  move_to_webapps
+}
+
+start_all() {
+  initiating
   start_tomcat
 
   sleep 5
@@ -97,8 +105,11 @@ case "$1" in
   tomcat)
     start_tomcat
     ;;
+  init)
+    initiating
+    ;;
   *)
-    echo "Usage: $0 {start|kill|tomcat}"
+    echo "Usage: $0 {start|kill|tomcat|init}"
     exit 1
     ;;
 esac
