@@ -3,7 +3,7 @@ plugins {
     id 'war'
 }
 
-group 'net.therap'
+group 'net.transpo'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -49,42 +49,4 @@ dependencies {
 
 test {
     useJUnitPlatform()
-}
-
-def tomcatDir = '/usr/local/tomcat-9'
-def warName = 'transportation_system'
-
-test {
-    useJUnitPlatform()
-}
-
-tasks.register('startTomcat', Exec) {
-    commandLine 'bash', '-c', "${tomcatDir}/bin/catalina.sh start"
-}
-
-tasks.register('stopTomcat', Exec) {
-    dependsOn(startTomcat)
-
-    commandLine 'bash', '-c', "${tomcatDir}/bin/catalina.sh stop"
-}
-
-tasks.register('removeExistingWar') {
-    dependsOn(stopTomcat)
-
-    doLast {
-        delete fileTree(dir: "${tomcatDir}/webapps", include: [archivesBaseName + '*'])
-    }
-}
-
-tasks.register('deploy', Copy) {
-    dependsOn(removeExistingWar, startTomcat)
-
-    from('build/libs')
-    into("${tomcatDir}/webapps")
-    include(archivesBaseName + '-' + version + '.war')
-    rename { archivesBaseName + '.war' }
-
-    doLast {
-        println "Server URL: http://localhost:8080/${warName}"
-    }
 }
