@@ -46,7 +46,7 @@
 
                                         </div>
                                     </div>
-                                    <p class="error">Pick points should start from Therap.</p>
+                                    <p class="error">Pick points should start from #FROM_START.</p>
                                     <table id="locationTable" class="table table-bordered table-striped">
                                         <thead>
                                         <tr>
