@@ -53,6 +53,7 @@ public class AuthHelper {
 
         if (isNull(employee)) {
             log.info("In Auth helper: no found Employee");
+            System.out.println("In Auth helper: no found Employee");
 
             throw new NoResultException();
         }
@@ -64,6 +65,8 @@ public class AuthHelper {
         AuthenticationInfo credentials = authenticationInfoService.findByEmail(authenticationInfo);
 
         String hasedPassword = HashCodeHelper.generateHash(authenticationInfo.getPassword() + credentials.getSalt());
+
+        System.out.println("hasedPassword = " + hasedPassword);
 
         authenticationInfo.setHasedPassword(hasedPassword);
     }
