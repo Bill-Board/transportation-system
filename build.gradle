@@ -28,6 +28,9 @@ dependencies {
     implementation 'org.hibernate:hibernate-core:5.6.15.Final'
     implementation 'org.hibernate:hibernate-entitymanager:5.6.15.Final'
 
+    // Spring Data Redis (standalone, not Boot starter)
+    implementation 'org.springframework.data:spring-data-redis:2.7.8'
+
     implementation 'javax.validation:validation-api:2.0.1.Final'
     implementation 'org.hibernate.validator:hibernate-validator:6.2.5.Final'
     implementation 'org.glassfish:javax.el:3.0.0'
