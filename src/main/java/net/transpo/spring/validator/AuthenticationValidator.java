@@ -47,6 +47,8 @@ public class AuthenticationValidator implements Validator {
         AuthCmd authCmd = (AuthCmd) target;
         AuthenticationInfo authenticationInfo = authCmd.getAuthenticationInfo();
 
+        log.debug("AUTH_INFO : email: {}", authenticationInfo.getEmail());
+
         if (nonNull(authenticationInfo.getEmail()) && nonNull(authenticationInfo.getPassword())) {
             this.checkInvalidCredentials(authenticationInfo, errors);
         } else {
@@ -57,11 +59,15 @@ public class AuthenticationValidator implements Validator {
     private void checkInvalidCredentials(AuthenticationInfo authenticationInfo, Errors errors) {
         AuthenticationInfo credentials = authenticationInfoService.findByEmail(authenticationInfo);
 
+        log.debug("AUTH_INFO input auth, : {}", authenticationInfo);
+
         if (isNull(credentials)) {
             errors.rejectValue(EMAIL, INVALID_CREDENTIALS);
 
             return;
         }
+
+        log.debug("AUTH_INFO auth, : {}", credentials);
 
         if (!isEqualHasedPassword(authenticationInfo, credentials, errors)) {
 
@@ -74,6 +80,8 @@ public class AuthenticationValidator implements Validator {
     private boolean isEqualHasedPassword(AuthenticationInfo authenticationInfo, AuthenticationInfo credentials, Errors errors) {
         String hasedPassword = HashCodeHelper.generateHash(authenticationInfo.getPassword() + credentials.getSalt());
 
+        log.debug("AUTH_INFO input hashed pass, : {}", hasedPassword);
+
         if (!hasedPassword.equals(credentials.getHasedPassword())) {
             errors.rejectValue(EMAIL, INVALID_CREDENTIALS);
 
@@ -84,6 +92,8 @@ public class AuthenticationValidator implements Validator {
     }
 
     private void checkEmployeeStatus(Employee employee, Errors errors) {
+        log.debug("AUTH_INFO employee, : {}", employee);
+        
         if (Objects.equals(employee.getStatus(), STATUS_INACTIVE)) {
             errors.rejectValue(EMAIL, INVALID_CREDENTIALS);
         } else if (Objects.equals(employee.getStatus(), STATUS_PENDING)) {

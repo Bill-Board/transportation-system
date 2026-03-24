@@ -147,4 +147,15 @@ public class AuthenticationInfo extends Persistent {
         return Objects.hash(id, email);
     }
 
+    @Override
+    public String toString() {
+        return "AuthenticationInfo{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", hasedPassword='" + hasedPassword + '\'' +
+                ", salt='" + salt + '\'' +
+                ", password='" + password + '\'' +
+                ", confirmPassword='" + confirmPassword + '\'' +
+                '}';
+    }
 }
