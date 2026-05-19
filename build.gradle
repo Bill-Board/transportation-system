@@ -3,6 +3,11 @@ plugins {
     id 'war'
 }
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
 group 'net.transpo'
 version '1.0-SNAPSHOT'
 
@@ -11,8 +16,7 @@ repositories {
     mavenCentral()
 }
 
-sourceCompatibility = '1.8'
-targetCompatibility = '1.8'
+
 
 project.ext {
     springVersion = '5.3.8'
@@ -29,7 +33,7 @@ dependencies {
 
     implementation 'javax.servlet:javax.servlet-api:4.0.1'
     implementation 'javax.servlet:jstl:1.2'
-    implementation 'javax:javaee-api:7.0'
+    implementation 'javax:javaee-api:8.0'
 
     implementation "org.springframework:spring-orm:${springVersion}"
     implementation "org.springframework:spring-tx:${springVersion}"

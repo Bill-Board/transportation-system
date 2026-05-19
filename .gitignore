@@ -6,6 +6,7 @@
 # Node artifact files
 node_modules/
 dist/
+bin/
 
 # Compiled Java class files
 *.class
@@ -23,8 +24,9 @@ dist/
 target/
 dist/
 
-# JetBrains IDE
+# IDE
 .idea/
+.vscode/
 
 # Unit test reports
 TEST*.xml
